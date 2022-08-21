@@ -1,0 +1,3 @@
+GalaxyTable.png:
+CREATE TABLE galaxy(galaxy_id SERIAL PRIMARY KEY, name VARCHAR(30) UNIQUE NOT NULL, description TEXT, distance_from_earth INT,
+distance_from_milkyway INT, life NUMERIC, is_spherical BOOLEAN, has_life BOOLEAN);

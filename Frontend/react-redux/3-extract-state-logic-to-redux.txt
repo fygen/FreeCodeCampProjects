@@ -1,0 +1,30 @@
+// Define ADD, addMessage(), messageReducer(), and store here:
+const ADD = "ADD";
+const state = [];
+
+const addMessage = (message) => {
+  return {
+    type: ADD,
+    message: message
+  }
+}
+
+const messageReducer = (state = [], action) => {
+  switch (action.type){
+    case(ADD): return [...state ,action.message]; 
+    default: return state;
+  }
+}
+
+const store = Redux.createStore(messageReducer);
+
+/* console.log(store.getState())
+console.log(store.dispatch(addMessage("hi")))
+console.log(store.getState());
+console.log(store.dispatch(addMessage("awww")))
+console.log(store.getState());
+console.log(store.dispatch(addMessage("so")))
+console.log(store.getState());
+console.log(store.dispatch(addMessage("me")))
+console.log(store.getState());
+ */

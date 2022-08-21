@@ -1,0 +1,22 @@
+function rot13(str) {
+  let arr = str.split("")
+  let tarr = [];
+  let sta = "";
+  arr.forEach(item => {
+    if(item.charCodeAt(0)>64 && item.charCodeAt(0)<91){
+      if(item.charCodeAt(0)>77){
+      tarr.push(item.charCodeAt(0)-13)
+      }
+      else{
+      tarr.push(item.charCodeAt(0)+13)  
+      }
+    }else{
+      tarr.push(item.charCodeAt(0))
+    }
+  })
+  sta = String.fromCharCode(...tarr)
+  console.log(arr, tarr,sta);
+  return sta;
+}
+
+rot13("SERR PBQR PNZC");

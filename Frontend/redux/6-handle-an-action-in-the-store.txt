@@ -1,0 +1,30 @@
+const LOGIN = "LOGIN";
+const defaultState = {
+  login: false
+};
+
+const reducer = (state = defaultState, action) => {
+  // Change code below this line
+  //console.log(defaultState,action.type)
+  switch(action.type){
+    case LOGIN: 
+    {
+      return {login: true}
+    }break;
+    default: return {login: false}
+    break;
+  
+  }
+  // Change code above this line
+};
+
+const store = Redux.createStore(reducer);
+
+const loginAction = () => {
+  return {
+    type: 'LOGIN'
+  }
+};
+/* console.log(store.getState())
+console.log(store.dispatch(loginAction()))
+console.log(store.getState()) */

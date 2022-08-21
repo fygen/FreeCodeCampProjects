@@ -1,0 +1,15 @@
+function translatePigLatin(str) {
+  let ste = str.split("")
+  let st = "";
+  let regex = /^[^aeoui]*/;
+  if (str.match(regex)[0]) {
+    st = str.replace(str.match(regex)[0], "") + str.match(regex)[0] +"ay";
+  }else{
+    st = str + "way";
+  }
+  return st;
+}
+
+translatePigLatin("consonant");
+translatePigLatin("glove")
+translatePigLatin("schwartz")

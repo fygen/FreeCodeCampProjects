@@ -1,0 +1,22 @@
+function destroyer(arr, ...args) {
+  console.log(arr, args);
+  let ind = [];
+  args.forEach((val, ind) => {
+    console.log("args", ind, ":", val)
+    if (arr.indexOf(val) >= 0) {
+        arr.splice(arr.indexOf(val), 1);
+    }
+    arr.forEach((val1, ind1) => {
+      console.log("arr", ind1, ":", val1)
+      if (arr.indexOf(val) >= 0) {
+        arr.splice(arr.indexOf(val), 1);
+      }
+    }
+    )
+  })
+  console.log("sonuc",arr);
+  return arr;
+}
+
+//destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+destroyer([2, 3, 2,5, 12,12,34,45,1,43,1,21,21,21,21,21, 3],21,1, 2, 3)

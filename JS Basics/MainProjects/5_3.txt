@@ -1,0 +1,59 @@
+function checkCashRegister(price, cash, cid) {
+  let jsNorm = 1000;           //Because of js problems with float math.Everything is mult.1000
+  let arr = [0.01, 0.05, 0.1, 0.25, 1, 5, 10, 20, 100].map(item => item * jsNorm);
+  let change = (cash - price) * jsNorm;
+  let ret = [];               //The obj needed to be returned 
+  let cidTtl = 0;             //Total Cash in the Drawer definition
+  let cL = cid.length
+  for (let i = 0; i < cL; i++) {
+    cidTtl += cid[i][1] * jsNorm;     //Calculation of Total Money
+    cid[i][1] = cid[i][1] * jsNorm;   //Normalizing the Cid Arr numbers.
+  }
+  if (cidTtl === change) {
+    var op2 = true;
+  }
+  console.log("change:", change, "cdTtl:", cidTtl)
+
+  if (change > 0 & cidTtl > change) {             //If change is positive section
+    for (let i = cL - 1; i >= 0; i--) {           //From the biggest to small
+      if (change >= arr[i]) {                     //Check if change is bigger than element.
+        console.log("Found:", cid[i]);                      //Debug----- for current Unit
+        if (cid[i][1] > 0) {                      //If Curr Unit has available cash pay with it.
+          change -= arr[i];                       //Subtract the unit from change
+          cid[i][1] -= arr[i];                    //Subtract the unit from drawer
+          if (ret.find(ret => ret[0] === cid[i][0])) {        //If unit available then Add one unit more 
+            let z = ret.find(ret => ret[0] === cid[i][0])     //Z for holding the element
+            z[1] += arr[i];                                   //Add Currency to the returned part.
+          } else {                                            //If Curr Unit is not in the list 
+            ret.push([cid[i][0], arr[i]])                     //Then add Curr Unit to the list.
+          }
+          console.log("change: ", change, "cid:", cid[i])       //Debug----- for Change to zero and to see element              
+          i = i + 1;                                            //Repeat Currency Unit can be still available to use.
+        }
+      }
+    }
+  }
+
+  for (let i = 0; i < cL; i++) {
+    cid[i][1] = cid[i][1] / jsNorm;       //Returning to original float values.
+  }
+  for (let i = 0; i < ret.length; i++) {
+    ret[i][1] = ret[i][1] / jsNorm;
+  }
+  console.log("cid is: ", cid, "ret is", ret);
+
+  if (cidTtl < change | change !== 0 & !op2) {                         //If cidTtl < change and change is not zero
+    return { status: "INSUFFICIENT_FUNDS", change: [] }
+  } else if (op2) {                               //if change ===
+    return { status: "CLOSED", change: cid }
+  } else {
+    return { status: "OPEN", change: ret }
+  }
+}
+
+/*console.log(
+  checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
+)*/
+
+console.log(
+checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))

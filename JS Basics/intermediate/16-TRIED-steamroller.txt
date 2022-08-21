@@ -1,0 +1,10 @@
+function steamrollArray(array) {
+  return array.reduce( (previous, current) =>
+      Array.isArray(current)
+        ? [...previous, ...steamrollArray(current)]
+        : [...previous, current]
+    , []
+  );
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);

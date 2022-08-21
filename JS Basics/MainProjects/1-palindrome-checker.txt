@@ -1,0 +1,15 @@
+function palindrome(str) {
+  const strArr = str.toLowerCase().replace(/\s|\W|_/g,"").split("")
+  let rstrArr= [];
+  strArr.forEach(ch => {
+    rstrArr.unshift(ch);
+  })
+  console.log(strArr.join(""),rstrArr.join(""));
+  if (strArr.join("") === rstrArr.join("")){
+    return true;
+  }
+  return false;
+}
+console.log(
+palindrome("eye")
+);

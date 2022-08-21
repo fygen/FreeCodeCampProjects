@@ -1,0 +1,15 @@
+function bouncer(arr) {
+  let arr1=[];
+  for(let i in arr)
+  {
+    if(Boolean(arr[i])){
+      console.log("true",i)
+      arr1.push(arr[i])
+    }else{
+    }
+  }
+  console.log(arr1)
+  return arr1;
+}
+
+bouncer([7, "ate", "", false, 9]);

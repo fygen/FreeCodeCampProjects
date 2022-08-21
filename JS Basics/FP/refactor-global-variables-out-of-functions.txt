@@ -1,0 +1,26 @@
+// The global variable
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+// Change code below this line
+function add(bookList, bookName) {
+  let arrBook = [...bookList];
+  arrBook.push(bookName);
+  return arrBook;
+  
+  // Change code above this line
+}
+
+// Change code below this line
+function remove(bookList, bookName) {
+  let arrBook = [...bookList]
+  const book_index = arrBook.indexOf(bookName);
+  if (book_index >= 0) {
+
+    arrBook.splice(book_index, 1);
+    return arrBook;
+
+    // Change code above this line
+    }
+}
+
+add(bookList, "A Brief History of Time");

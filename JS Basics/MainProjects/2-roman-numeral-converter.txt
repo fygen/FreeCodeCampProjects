@@ -1,0 +1,44 @@
+function convertToRoman(num) {
+  let conv = {
+    1: "I",
+    5: "V",
+    10: "X",
+    50: "L",
+    100: "C",
+    500: "D",
+    1000: "M",
+  }
+  let resstr = "";
+  let numArr = String(num).split("");
+  let numArrR = [];
+  numArr.forEach(it => numArrR.unshift(it));
+
+  for (let z = numArrR.length; z >= 0; z--) {
+    let y = 10**z;
+    console.log(y);
+    if (numArrR[z] < 4) {
+      let iter = numArrR[z];
+      for (let i = 0; i < iter; i++) {
+        resstr += conv[1 * y];
+      }
+    } else if (numArrR[z] == 4) {
+      resstr += conv[1 * y] + conv[5 * y]
+    } else if (numArrR[z] == 5) {
+      resstr += conv[5 * y];
+    } else if (numArrR[z] < 9) {
+      let iter = numArrR[z] - 5;
+      resstr += conv[5 * y];
+      for (let i = 0; i < iter; i++) {
+        resstr += conv[1 * y];
+
+      }
+    } else if (numArrR[z] == 9) {
+      resstr += conv[1 * y] + conv[10 * y];
+    }
+  }
+  console.log(resstr, num);
+  return resstr;
+}
+
+convertToRoman(20);
+convertToRoman(798);

@@ -1,0 +1,21 @@
+function sumPrimes(num) {
+  let arr = [2, 3, 5];
+  for (let i = Math.max(...arr) + 1; i < num+1; i++) {
+    for (let y = 0; y < arr.length; y++) {
+      //console.log(i, "%", arr[y], "=", i % arr[y])
+      if (i % arr[y] !== 0) {
+        if (y === arr.length - 1 & !arr.includes(i)) {
+          arr.push(i);
+        }
+        continue;
+      } else if (i % arr[y] === 0) {
+        break;
+      }
+    }
+  }
+  let sum = arr.reduce((total, arg)=> total + arg)
+  console.log(arr,sum)
+  return sum;
+}
+
+sumPrimes(978);

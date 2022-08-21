@@ -1,0 +1,10 @@
+function spinalCase(str) {
+  let ste = str.split(/\W| |_|(?=[A-Z])/g).join("-").toLowerCase();
+  console.log(ste)
+  return ste;
+}
+
+spinalCase('This Is Spinal Tap');
+spinalCase("The_Andy_Griffith_Show")
+spinalCase("Teletubbies say Eh-oh")
+spinalCase("thisIsSpinalTap")

@@ -1,0 +1,15 @@
+function compare(a, b){
+  if (a < b){return -1;}
+  if (a > b){return 1;}
+  if (a === b){return 0;}
+}
+function getIndexToIns(arr, num) {
+  arr.push(num);
+  arr.sort(compare);
+  console.log(arr);
+  let index = arr.indexOf(num);
+  console.log(index)
+  return index;
+}
+
+getIndexToIns([40, 60], 50);

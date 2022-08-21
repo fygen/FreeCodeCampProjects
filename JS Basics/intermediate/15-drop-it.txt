@@ -1,0 +1,16 @@
+function dropElements(arr, callback) {
+  let arr1 = [];
+  let eq = false;
+  arr.forEach((item, ind) => {
+    if (callback(item)) {
+      arr1.push(item);
+      eq = true;
+    } else if (eq) {
+      arr1.push(item)
+    }
+  })
+  console.log(arr1)
+  return arr1;
+}
+
+dropElements([1, 2, 3, 4], function (n) { return n >= 3; });

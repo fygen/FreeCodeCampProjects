@@ -1,0 +1,10 @@
+function confirmEnding(str, target) {
+  let repl = target +"$" 
+  let regex = new RegExp(repl,"gi")
+  console.log(regex);
+  //console.log(regex.test(str));
+  let res = regex.test(str);
+  return res;
+}
+
+confirmEnding("Bastian", "n");
